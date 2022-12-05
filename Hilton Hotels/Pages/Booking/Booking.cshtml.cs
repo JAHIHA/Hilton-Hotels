@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Hilton_Hotels.Pages
+namespace Hilton_Hotels.Pages.Booking
 {
-    public class Hilton_Ocean_HotelModel : PageModel
+    public class BookingModel : PageModel
     {
-
         public void OnGet()
         {
         }

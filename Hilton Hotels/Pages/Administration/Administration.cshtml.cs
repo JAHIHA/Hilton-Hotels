@@ -1,37 +1,44 @@
 using Hilton_Hotels.Models;
+using Hilton_Hotels.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Hilton_Hotels.Pages.Administration
 {
     public class AdministrationModel : PageModel
     {
-        List<RoomModel> rooms = new List<RoomModel>();
-        
-
-        public void Add(RoomModel addroom)
+        private readonly IRoomService _roomService;
+        public AdministrationModel(IRoomService roomService)
         {
-            rooms.Add(addroom);
+            _roomService = roomService;
         }
-
-        public void Delete(string id)
-        {
-            RoomModel room = new();
-            foreach (var item in rooms)
-            {
-                if (item.ID == id)
-                {
-                     room = item; 
-                }
-            }
-            rooms.Remove(room);
-        }
-
-
+        [FromRoute] public int Id { get; set; } 
+        [BindProperty] public List<RoomModel> Rooms { get; set; } = new List<RoomModel>();
         
         public void OnGet()
         {
+            Rooms = _roomService.Get();
+            if (Rooms == null)
+            {
+                
+            }
+                  
+                    
         }
+
+        public void OnPost(int Id)
+        {
+            if (Id == null)
+            {
+                //exception
+            }
+            _roomService.Delete(Id);
+            Redirect("Administration/Administration");
+
+
+        }
+
     }
 }
