@@ -2,7 +2,7 @@
 {
     public interface IRoom
     {
-        string ID { get; set; } 
+        int ID { get; set; } 
 
         string Type { get; set; }
 
