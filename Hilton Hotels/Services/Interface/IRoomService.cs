@@ -1,6 +1,6 @@
 ﻿using Hilton_Hotels.Models;
 
-namespace Hilton_Hotels.Services
+namespace Hilton_Hotels.Services.Interface
 {
     public interface IRoomService
     {

@@ -1,5 +1,5 @@
 using Hilton_Hotels.Models;
-using Hilton_Hotels.Services;
+using Hilton_Hotels.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;

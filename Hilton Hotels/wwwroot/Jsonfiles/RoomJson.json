@@ -2,31 +2,9 @@
   {
     "Id": 101,
     "Type": "Normal",
-    "Price": 55,
-
-    "Id": 102,
-    "Type": "Normal",
-    "Price": 55,
-
-    "Id": 103,
-    "Type": "Normal",
-    "Price": 55,
-
-    "Id": 104,
-    "Type": "Normal",
-    "Price": 55,
-
-    "Id": 105,
-    "Type": "Normal",
-    "Price": 55,
-
-    "Id": 106,
-    "Type": "Normal",
-    "Price": 55,
-
-    "Id": 107,
-    "Type": "Normal",
     "Price": 55
+
+    
   }
 
 ]

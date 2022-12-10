@@ -1,4 +1,5 @@
 using Hilton_Hotels.Services;
+using Hilton_Hotels.Services.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 

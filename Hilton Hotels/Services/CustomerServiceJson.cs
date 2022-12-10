@@ -1,5 +1,5 @@
 ﻿using Hilton_Hotels.Models;
-
+using Hilton_Hotels.Services.Interface;
 using System.Text.Json;
 
 namespace Hilton_Hotels.Services
@@ -18,6 +18,12 @@ namespace Hilton_Hotels.Services
         }
         public void Add(CustomerModel costumer)
         {
+            // we ccheck if there is an ex 
+            var result = Find(costumer.Username);
+            if (result is not null )
+            {
+                throw new Exception("UserName exists"); 
+            }
             _customers.Add(costumer);
             SaveToJson();
         }
@@ -34,6 +40,7 @@ namespace Hilton_Hotels.Services
         {
             using(var file = File.OpenText(fileName))
             {
+                
                 String json= file.ReadToEnd();
                 return JsonSerializer.Deserialize<List<CustomerModel>>(json);
             }
@@ -47,7 +54,8 @@ namespace Hilton_Hotels.Services
             {
                 return c;
             }
-            throw new KeyNotFoundException();
+            return null;
+            
         }
         public void Update(CustomerModel newCustomer)
         {

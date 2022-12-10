@@ -1,0 +1,8 @@
+[
+  {
+    "ID" : 7,
+    "room": room.Id, 
+    "checkIn": 10
+
+  }
+]
