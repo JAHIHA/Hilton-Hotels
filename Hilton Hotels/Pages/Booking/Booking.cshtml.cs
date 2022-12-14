@@ -8,5 +8,10 @@ namespace Hilton_Hotels.Pages.Booking
         public void OnGet()
         {
         }
+
+        public void OnPost()
+        {
+
+        }
     }
 }
