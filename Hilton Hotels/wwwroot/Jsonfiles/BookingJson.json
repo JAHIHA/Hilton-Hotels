@@ -1,8 +1,15 @@
 [
   {
-    "ID" : 7,
-    "room": room.Id, 
-    "checkIn": 10
-
+    "ID": 1,
+    "RoomeId": 1,
+    "CustomerUser": "khaled",
+    "CheckIn": "10-01-2000",
+    "CheckOut": "11-01-2000"
   }
+
+
+
+
+
+
 ]

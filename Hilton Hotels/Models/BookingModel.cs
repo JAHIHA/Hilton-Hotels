@@ -8,13 +8,27 @@ namespace Hilton_Hotels.Models
         public int ID { get; set; }
         public int RooomeId{ get; set; }
         public string CustomerUser { get; set; }
-
-        private readonly IBookingServices BookingService; 
         public DateTime CheckIn { get; set; }   
         public DateTime CheckOut { get; set; }
 
+        private readonly IBookingServices BookingService;
 
+        public BookingModel(int ID, DateTime CheckIn, DateTime CheckOut, string CustomerUser, int RooomeId)
+        {
+            if (ID == default) throw new ArgumentOutOfRangeException(nameof(ID), "Booking Id is required");
+            if (CheckIn == default) throw new ArgumentOutOfRangeException(nameof(CheckIn), "CheckIn date is required");
+            if (CheckOut == default) throw new ArgumentOutOfRangeException(nameof(CheckOut), "CheckOut date is required");
+            if (RooomeId == default) throw new ArgumentOutOfRangeException(nameof(RooomeId), "Room id is required");
+            if (CustomerUser == default) throw new ArgumentOutOfRangeException(nameof(CustomerUser), "CustomerUserName  is required");
+            if (CheckIn >= CheckOut) throw new Exception($"CheckOut has to come later than check in (CheckIn, CheckOut): {CheckIn}, {CheckOut}");
+            this.ID = ID;
+            this.CheckIn = CheckIn;
+            this.CheckOut = CheckOut;
+            this.CustomerUser = CustomerUser;
+            this.RooomeId = RooomeId;
 
+            if (IsOverlapping()) throw new Exception("Booking overlapper med eksisterende booking");
+        }
         public BookingModel(int _bookingId, DateTime _checkIn, DateTime _checkOut, string _customerUsername, int _roomId, IBookingServices _services)
         {
             if (_bookingId == default) throw new ArgumentOutOfRangeException(nameof(_bookingId), "Booking Id is required");
@@ -31,6 +45,7 @@ namespace Hilton_Hotels.Models
             BookingService = _services;
             if (IsOverlapping()) throw new Exception("Booking overlapper med eksisterende booking");
         }
+      
 
 
         public bool IsOverlapping()
