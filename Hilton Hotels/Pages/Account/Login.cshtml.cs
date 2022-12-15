@@ -9,7 +9,7 @@ using System.Net;
 
 namespace Hilton_Hotels.Pages.Account
 {
-    public class Login_inModel : PageModel
+    public class LoginPageModel : PageModel
     {
         
         [BindProperty]
@@ -17,7 +17,7 @@ namespace Hilton_Hotels.Pages.Account
 
         private readonly ICustomerService _serviceCustomer;
         public CustomerModel customerModel { get; set; }
-        public Login_inModel(ICustomerService service)
+        public LoginPageModel(ICustomerService service)
         {
             _serviceCustomer = service; 
 
