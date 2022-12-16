@@ -36,6 +36,7 @@ namespace Hilton_Hotels.Pages.Booking
                  _booking);
 
             _booking.AddBooking(newBooking);
+
         }
 
         

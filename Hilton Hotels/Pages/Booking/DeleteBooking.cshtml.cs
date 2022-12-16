@@ -11,17 +11,18 @@ namespace Hilton_Hotels.Pages.Booking
         {
             _service = service; 
         }
-        private IBookingServices _service;  
-        public BookingModel removeBooking { get; set; } 
+        private IBookingServices _service;
+        [BindProperty]
+        public BookingModel RemoveBooking { get; set; } 
 
         public void OnGet(int Id)
         {
-            removeBooking = _service.Find(Id); 
+            RemoveBooking = _service.Find(Id); 
         }
         public IActionResult OnPost(int Id)
         {
             _service.RemoveBooking(Id);
-            return RedirectToPage("Booking");
+            return RedirectToPage("IndexBooking");
         }
     }
 }

@@ -20,8 +20,16 @@ namespace Hilton_Hotels.Services
         }
         public void AddBooking(BookingModel book)
         {
-            _bookingModel.Add(book);
-            SaveToJson();
+            var result=IsOverlapping(book);
+            if (result == false)
+            {
+                _bookingModel.Add(book);
+                SaveToJson();
+            }
+            else 
+            {
+                throw new Exception("is overlapping");
+            }
         }
         public List<BookingModel> ReadFromJson()
         {
@@ -55,12 +63,20 @@ namespace Hilton_Hotels.Services
         public void Update(BookingModel book)
         {
             BookingModel booking = Find(book.ID);
+            var result = IsOverlapping(book);
+            if (result == false)
+            {
+                booking.CheckIn = book.CheckIn;
+                booking.CheckOut = book.CheckOut;
+                booking.RooomeId = book.RooomeId;
+                booking.CustomerUser = book.CustomerUser;
 
-            booking.CheckIn = book.CheckIn;
-            booking.CheckOut = booking.CheckOut;
-            
-
-            SaveToJson();
+                SaveToJson();
+            }
+            else
+            {
+                throw new Exception("Overlap");
+            }
         }
         private void SaveToJson()
         {
@@ -70,6 +86,11 @@ namespace Hilton_Hotels.Services
         public List<BookingModel> Get()
         {
             return new List<BookingModel>(_bookingModel);
+        }
+        public bool IsOverlapping(BookingModel booking)
+        {
+            return Get()
+                .Any(a => a.ID != booking.ID && a.CheckIn <= booking.CheckOut && booking.CheckIn <= a.CheckOut && a.RooomeId == booking.RooomeId);
         }
 
     }
