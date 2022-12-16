@@ -33,7 +33,7 @@ namespace Hilton_Hotels.Pages.Customer
             };
             
             _customer.Add(model);
-            Response.Redirect("/Login in/Login in");
+            Response.Redirect("/Account/Login");
         }
        
     }

@@ -27,11 +27,11 @@ namespace Hilton_Hotels.Pages.Account
             
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             if(Login.UserName == "Admin" && Login.Password == "Hotel")
             {
-                Response.Redirect("/Administration/Administration");
+                return RedirectToPage("/Administration/Administration");
             }
             customerModel = new CustomerModel()
             {
@@ -41,11 +41,11 @@ namespace Hilton_Hotels.Pages.Account
             var result = _serviceCustomer.Find(customerModel.Username);
             if (result == null)
             {
-                Response.Redirect("/Register/Register");
+                return RedirectToPage("/Register/Register");
             }
             else
             {
-                Response.Redirect("/Index" );  
+                return RedirectToPage("/Index" );  
             }
            
       

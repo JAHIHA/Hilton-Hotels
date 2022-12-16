@@ -1,0 +1,46 @@
+﻿@page
+@model Hilton_Hotels.Pages.Booking.IndexBookingModel
+@{
+}
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>CHECK IN</th>
+                <th>CHECK OUT</th>
+                <th>CUSTOMER</th>
+                <th>ROOM ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.BookingModels.Count == 0)
+            {
+                <p>Empty list</p>
+            }
+            else
+            {
+                @foreach (var p in Model.BookingModels)
+                {
+
+
+
+                    <tr>
+                        <td>@p.ID</td>
+                        <td>@p.CheckIn</td>
+                        <td>@p.CheckOut</td>
+                        <td>@p.CustomerUser</td>
+                        <td>@p.RooomeId</td>
+                        <td><a asp-page="DeleteBooking" asp-route-id="@p.ID">Delete</a></td>
+                        <td><a asp-page="UpdateBooking" asp-route-id="@p.ID">Update</a></td>
+                    </tr>
+                }
+            }
+
+
+
+        </tbody>
+    </table>
+    
+
+</div>

@@ -32,10 +32,12 @@ namespace Hilton_Hotels.Pages.Booking
                Booking.CheackIn,
                 Booking.CheackOut,
                 Booking.CustomerUser,
-                 Booking.RoomeId);
+                 Booking.RoomeId, 
+                 _booking);
 
             _booking.AddBooking(newBooking);
         }
+
         
     }
     public class BookingCustomer
