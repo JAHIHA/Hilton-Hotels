@@ -16,14 +16,23 @@
         </div>
         <div class="form-group row">
             <div class="col-2">
-                <label asp-for="Booking.RoomeId"></label>
+                <label asp-for="Booking.CheackIn"></label>
             </div>
             <div class="col-5">
-                <input type="password" asp-for="Booking.RoomeId" class="form-control" />
+                <input type="text" asp-for="Booking.CheackIn" class="form-control" />
             </div>
-            <span class="text-danger" asp-validation-for="Booking.RoomeId"></span>
+            <span class="text-danger" asp-validation-for="Booking.CheackIn"></span>
         </div>
 
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Booking.CheackOut"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="Booking.CheackOut" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="Booking.CheackOut"></span>
+        </div>
         <div class="form-group row">
             <div class="col-2">
                 <label asp-for="Booking.CustomerUser"></label>
@@ -35,21 +44,12 @@
         </div>
         <div class="form-group row">
             <div class="col-2">
-                <label asp-for="Booking.CheackIn"></label>
+                <label asp-for="Booking.RoomeId"></label>
             </div>
             <div class="col-5">
-                <input type="text" asp-for="Booking.CheackIn" class="form-control" />
+                <input type="text" asp-for="Booking.RoomeId" class="form-control" />
             </div>
-            <span class="text-danger" asp-validation-for="Booking.CheackIn"></span>
-        </div>
-        <div class="form-group row">
-            <div class="col-2">
-                <label asp-for="Booking.CheackOut"></label>
-            </div>
-            <div class="col-5">
-                <input type="text" asp-for="Booking.CheackOut" class="form-control" />
-            </div>
-            <span class="text-danger" asp-validation-for="Booking.CheackOut"></span>
+            <span class="text-danger" asp-validation-for="Booking.RoomeId"></span>
         </div>
         <div class="form-group row">
             <div class="col-2">

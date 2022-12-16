@@ -29,7 +29,7 @@ namespace Hilton_Hotels.Services
             {
 
                 String json = file.ReadToEnd();
-             //   return JsonSerializer.Deserialize<List<BookingModel>>(json);
+             return JsonSerializer.Deserialize<List<BookingModel>>(json);
             }
             return new List<BookingModel>();
         }

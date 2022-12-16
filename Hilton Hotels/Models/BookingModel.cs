@@ -12,6 +12,9 @@ namespace Hilton_Hotels.Models
         public DateTime CheckOut { get; set; }
 
         private readonly IBookingServices BookingService;
+        public BookingModel() 
+        {
+        }
 
         public BookingModel(int ID, DateTime CheckIn, DateTime CheckOut, string CustomerUser, int RooomeId)
         {
@@ -51,7 +54,7 @@ namespace Hilton_Hotels.Models
         public bool IsOverlapping()
         {
             return BookingService.Get()
-                .Any(a => a.ID != ID && a.CheckIn <= CheckOut && CheckOut <= a.CheckOut && a.RooomeId == RooomeId);
+                .Any(a => a.ID != ID && a.CheckIn >= CheckOut && a.CheckOut <= CheckIn && a.RooomeId == RooomeId);
         }
 
 
