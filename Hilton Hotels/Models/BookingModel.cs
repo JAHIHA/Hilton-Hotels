@@ -30,7 +30,7 @@ namespace Hilton_Hotels.Models
             this.CustomerUser = CustomerUser;
             this.RooomeId = RooomeId;
 
-            if (IsOverlapping()) throw new Exception("Booking overlapper med eksisterende booking");
+            
         }
         public BookingModel(int _bookingId, DateTime _checkIn, DateTime _checkOut, string _customerUsername, int _roomId, IBookingServices _services)
         {
@@ -46,17 +46,11 @@ namespace Hilton_Hotels.Models
             CustomerUser = _customerUsername;
             RooomeId = _roomId;
             BookingService = _services;
-            if (IsOverlapping()) throw new Exception("Booking overlapper med eksisterende booking");
         }
       
 
 
-        public bool IsOverlapping()
-        {
-            return BookingService.Get()
-                .Any(a => a.ID != ID && a.CheckIn >= CheckOut && a.CheckOut <= CheckIn && a.RooomeId == RooomeId);
-        }
-
+      
 
 
 

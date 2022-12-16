@@ -2,6 +2,7 @@ using Hilton_Hotels.Models;
 using Hilton_Hotels.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.Design;
 
 namespace Hilton_Hotels.Pages.Booking
 {
@@ -14,17 +15,18 @@ namespace Hilton_Hotels.Pages.Booking
         private IBookingServices _service;
 
         [BindProperty]
-        public BookingModel UpdateBooking { get; set; } 
+        public BookingModel UpdateBooking { get; set; }
 
-     
+
         public void OnGet(int Id)
         {
-            UpdateBooking=_service.Find(Id);
+            UpdateBooking = _service.Find(Id);
         }
-        public IActionResult OnPostUpdate(int Id)
+        public IActionResult OnPost()
         {
             _service.Update(UpdateBooking);
-            return RedirectToPage("Booking");
+            return RedirectToPage("IndexBooking");
         }
     }
+
 }
