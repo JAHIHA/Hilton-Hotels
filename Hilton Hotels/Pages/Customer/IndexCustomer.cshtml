@@ -1,0 +1,43 @@
+﻿@page
+@model Hilton_Hotels.Pages.Customer.IndexCustomerModel
+@{
+}
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>USERNAME</th>
+                <th>PASSWORD</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.CustomerModels.Count == 0)
+            {
+                    <p>Empty list</p>
+            }
+            else
+            {
+                @foreach (var p in Model.CustomerModels)
+                {
+
+
+
+                            <tr>
+                                <td>@p.Name</td>
+                                <td>@p.Username</td>
+                                <td>@p.Password</td>  
+                                <td><a asp-page="DeleteCustomer" asp-route-id="@p.Username">Delete</a></td>
+                                <td><a asp-page="UpdateCustomer" asp-route-id="@p.Username">Update</a></td>
+                            </tr>
+                }
+            }
+
+
+
+        </tbody>
+    </table>
+
+
+</div>
