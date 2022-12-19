@@ -5,7 +5,7 @@ using System.Text.Json;
 namespace Hilton_Hotels.Services
 {
     public class RoomServiceJson : IRoomService
-    {
+    {//methods for rooms(Jakob)
         private const string fileDir = "../Hilton Hotels/wwwroot/Jsonfiles/";
         private const string fileName = fileDir + "RoomJson.json";
 
@@ -14,12 +14,13 @@ namespace Hilton_Hotels.Services
         {
             _rooms = ReadFromJson();
         }
+        // adds a room and saves it to json
         public void Add(RoomModel room)
         {
             _rooms.Add(room);
             SaveToJson();
         }
-
+        // this methods findsthe room with an id and removes it and saves changes to json
         public void Delete(int ID)
         {
             RoomModel room = Find(ID);
@@ -27,7 +28,7 @@ namespace Hilton_Hotels.Services
             SaveToJson();
 
         }
-
+        //this method reads the files from json
         public List<RoomModel> ReadFromJson()
         {
             using (var file = File.OpenText(fileName))
@@ -37,7 +38,7 @@ namespace Hilton_Hotels.Services
             }
             return new List<RoomModel>();
         }
-
+        // this method finds the room from the id we give it
         public RoomModel Find(int ID)
         {
             RoomModel r = _rooms.Find(r => r.ID == ID);
@@ -46,6 +47,7 @@ namespace Hilton_Hotels.Services
                 return r;
             }
             throw new KeyNotFoundException();
+            //This method finds the room with the id, makes changes and saves them to json
         }
         public void Update(RoomModel newRoom)
         {
@@ -57,12 +59,13 @@ namespace Hilton_Hotels.Services
 
             SaveToJson();
         }
-
+        //This method saves changes to json
         private void SaveToJson()
         {
             String json = JsonSerializer.Serialize(_rooms);
             File.WriteAllText(fileName, json);
         }
+        // this ethods calls and shows the list of rooms
         public List<RoomModel> Get()
         {
             return new List<RoomModel>(_rooms);

@@ -3,7 +3,7 @@
 namespace Hilton_Hotels.Services.Interface
 {
     public interface ICustomerService
-    {
+    {// interface methods for customer
         public void Add(CustomerModel costumer);
         public void Update(CustomerModel costumer);
         public void Delete(string UserName);

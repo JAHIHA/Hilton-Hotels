@@ -10,7 +10,7 @@ using System.Net;
 namespace Hilton_Hotels.Pages.Account
 {
     public class LoginPageModel : PageModel
-    {
+    {//Login properties(khaled)
         
         [BindProperty]
         public LoginModel Login { get; set; }
@@ -26,12 +26,12 @@ namespace Hilton_Hotels.Pages.Account
         {
             
         }
-
+        //Checks if the administrator is in or if a customer is in needs to be registered
         public IActionResult OnPost()
         {
             if(Login.UserName == "Admin" && Login.Password == "Hotel")
             {
-                return RedirectToPage("/Administration/Administration");
+                return RedirectToPage("/Booking/IndexBooking");
             }
             customerModel = new CustomerModel()
             {
@@ -45,7 +45,7 @@ namespace Hilton_Hotels.Pages.Account
             }
             else
             {
-                return RedirectToPage("/Index" );  
+                return RedirectToPage("/Booking/Booking" );  
             }
            
       

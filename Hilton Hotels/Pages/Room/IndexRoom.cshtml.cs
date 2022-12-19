@@ -18,5 +18,20 @@ namespace Hilton_Hotels.Pages.Room
         {
             RoomModels = _roomServices.Get();
         }
+        public IActionResult OnPost()
+        {
+
+            return RedirectToPage("CreateRoom");
+        }
+        public IActionResult OnPostBooking()
+        {
+
+            return RedirectToPage("../Booking/IndexBooking");
+        }
+        public IActionResult OnPostCustomer()
+        {
+
+            return RedirectToPage("../Customer/IndexCustomer");
+        }
     }
 }

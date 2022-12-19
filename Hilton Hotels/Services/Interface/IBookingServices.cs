@@ -3,7 +3,7 @@
 namespace Hilton_Hotels.Services.Interface
 {
     public interface IBookingServices
-    {
+    {//Interface Booking Methods(Jakob)
         public void AddBooking(BookingModel room);
         public void RemoveBooking(int id);
         public List<BookingModel> Get();
