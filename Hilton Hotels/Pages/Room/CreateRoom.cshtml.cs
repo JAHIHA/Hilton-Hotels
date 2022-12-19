@@ -6,22 +6,22 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hilton_Hotels.Pages.Room
 {
-    public class CreateRoomModel : PageModel
+    public class CreateRoomModel : PageModel//This page is to create the room(Jakob)
     {
-        private readonly IRoomService _create;
+        private readonly IRoomService _create;//this reads the interface of the room
 
-        public CreateRoomModel(IRoomService create)
+        public CreateRoomModel(IRoomService create)//contructor
         {
             _create = create;
         }
         [BindProperty]
-        public CreateRoom Create { get; set; }
+        public CreateRoom Create { get; set; }// the create room property
 
         public void OnGet()
         {
         }
 
-        public void OnPost()
+        public void OnPost()// this method adds a new room and the information
         {
             RoomModel newRoom = new RoomModel
                 (Create.ID,
@@ -33,7 +33,7 @@ namespace Hilton_Hotels.Pages.Room
 
 
     }
-    public class CreateRoom
+    public class CreateRoom//All the properties of the create room
     {
         [Required]
         public int ID { get; set; }
