@@ -1,12 +1,13 @@
 ﻿using Hilton_Hotels.Models;
 using Hilton_Hotels.Pages.Customer;
 using Hilton_Hotels.Services.Interface;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 
 namespace Hilton_Hotels.Services
 {
     public class BookingService : IBookingServices
-    {
+    {//Booking services(Jakob
 
 
         private const string fileDir = "../Hilton Hotels/wwwroot/Jsonfiles/";
@@ -18,6 +19,7 @@ namespace Hilton_Hotels.Services
         {
             _bookingModel = ReadFromJson();
         }
+        //we use to overlap methop and is it doesnt ovrlap it add the booking and saves the file to json
         public void AddBooking(BookingModel book)
         {
             var result=IsOverlapping(book);
@@ -31,6 +33,7 @@ namespace Hilton_Hotels.Services
                 throw new Exception("is overlapping");
             }
         }
+        //this check and reads the json files
         public List<BookingModel> ReadFromJson()
         {
             using (var file = File.OpenText(fileName))
@@ -41,6 +44,7 @@ namespace Hilton_Hotels.Services
             }
             return new List<BookingModel>();
         }
+        // this method finds a booking with id
         public BookingModel Find(int id)
         {
             BookingModel b = _bookingModel.Find(b => b.ID == id);
@@ -52,14 +56,14 @@ namespace Hilton_Hotels.Services
         }
 
        
-
+        //this method remove a booking and saves the change in json files
         public void RemoveBooking(int id)
         {
             BookingModel booking = Find(id);
             _bookingModel.Remove(booking);
             SaveToJson();
         }
-
+        //the update uses the method find to find the booking check if it is overlapping and then makes the changes and saves it to json
         public void Update(BookingModel book)
         {
             BookingModel booking = Find(book.ID);
@@ -78,15 +82,18 @@ namespace Hilton_Hotels.Services
                 throw new Exception("Overlap");
             }
         }
+        //this method saves information to json files
         private void SaveToJson()
         {
             String json = JsonSerializer.Serialize(_bookingModel);
             File.WriteAllText(fileName, json);
         }
+        //this method shows the list of the bookings
         public List<BookingModel> Get()
         {
             return new List<BookingModel>(_bookingModel);
         }
+        // this methods gets the list of booking and checks if it overlaps with the new information.
         public bool IsOverlapping(BookingModel booking)
         {
             return Get()

@@ -3,7 +3,7 @@ using Hilton_Hotels.Services.Interface;
 
 namespace Hilton_Hotels.Models
 {
-    public class BookingModel
+    public class BookingModel//Booking model with constructors(Jakob)
     {
         public int ID { get; set; }
         public int RooomeId{ get; set; }

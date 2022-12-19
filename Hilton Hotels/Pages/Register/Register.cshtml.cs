@@ -9,22 +9,22 @@ using System.Xml.Linq;
 
 namespace Hilton_Hotels.Pages.Customer
 {
-    public class RegisterModel : PageModel
+    public class RegisterModel : PageModel // here we have a code for the register  (Jakob) 
     {
         private readonly ICustomerService _customer;
 
 
-        public RegisterModel(ICustomerService customer)
+        public RegisterModel(ICustomerService customer) // this constructor is for the Customer service 
         {
             _customer = customer;
             
         }
         [BindProperty]
-        public RegisterCostumer registerCostumer { get; set; }
-        public void OnGet()
+        public RegisterCostumer registerCostumer { get; set; } // this property is for the register 
+        public void OnGet() 
         {
         }
-        public void OnPost()
+        public void OnPost() // this adds the info about the Customer 
         {
             CustomerModel model = new CustomerModel(){
             Name = registerCostumer.Name,
@@ -37,7 +37,7 @@ namespace Hilton_Hotels.Pages.Customer
         }
        
     }
-    public class RegisterCostumer
+    public class RegisterCostumer // this is the properties for the Register
     {
         [Required]
         [Display(Name = "Name")]

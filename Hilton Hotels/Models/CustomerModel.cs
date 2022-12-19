@@ -1,7 +1,7 @@
 ﻿namespace Hilton_Hotels.Models
 {
     public class CustomerModel : ICustomer
-    {
+    {//Model with constructors(Khaled)
         public string Name { get; set; }
         
         public string Username { get; set; }

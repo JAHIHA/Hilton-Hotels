@@ -4,7 +4,7 @@ using Microsoft.VisualBasic;
 namespace Hilton_Hotels.Services
 {
     public class PaymentService : IPaymentService
-    {
+    {//Ignore
         public double computeCost(DateTime checkin, DateTime checkout)
         {
             double pay = 0;

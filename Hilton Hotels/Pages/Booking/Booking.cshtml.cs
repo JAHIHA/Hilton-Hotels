@@ -10,22 +10,22 @@ using System.Xml.Linq;
 
 namespace Hilton_Hotels.Pages.Booking
 {
-    public class BookingPageModel : PageModel
+    public class BookingPageModel : PageModel // this is Booking page (Khaled) 
     {
         private readonly IBookingServices _booking;
 
-        public BookingPageModel(IBookingServices booking)
+        public BookingPageModel(IBookingServices booking) // this is Booking page construcor 
         {
             _booking = booking;
         }
-        [BindProperty]
+        [BindProperty] // booking page property 
         public BookingCustomer Booking { get; set; }   
 
         public void OnGet()
         {
         }
 
-        public void OnPost()
+        public void OnPost() // this is the info for the booking 
         {
             BookingModel newBooking = new BookingModel
                 (Booking.ID,
@@ -41,7 +41,7 @@ namespace Hilton_Hotels.Pages.Booking
 
         
     }
-    public class BookingCustomer
+    public class BookingCustomer // this is the booking customer properties 
     {
         [Required]
         public int ID { get; set; }
